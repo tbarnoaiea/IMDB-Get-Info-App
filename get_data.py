@@ -4,6 +4,8 @@ import pandas as pd
 import sqlite3
 from typing import Any
 
+logger = logging.getLogger()
+logging.basicConfig(level=logging.INFO)
 
 endpoints = {'get_fan_favorites': 'getFanFavorites',
              'get_week_top_10': 'getWeekTop10',
@@ -23,7 +25,7 @@ def generate_report_top_week_list():
     ''')
 
     report = cursor.fetchall()
-    logging.info("Report: Top week movies")
+    logger.info("Report: Top week movies")
 
     for row in report:
         movies_list.append(row[0])
@@ -65,7 +67,7 @@ class Table:
         cursor = self._conn.cursor()
         cursor.execute(self._content)
         self._conn.commit()
-        logging.info(f'Table {self._table_name} created')
+        logger.info(f'Table {self._table_name} created')
         cursor.close()
 
 
