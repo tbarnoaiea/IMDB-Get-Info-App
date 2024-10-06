@@ -25,7 +25,7 @@ def generate_report_top_week_list():
     ''')
 
     report = cursor.fetchall()
-    logger.info("Report: Top week movies")
+    logger.info("Report generated: Top week movies")
 
     for row in report:
         movies_list.append(row[0])
@@ -67,7 +67,7 @@ class Table:
         cursor = self._conn.cursor()
         cursor.execute(self._content)
         self._conn.commit()
-        logger.info(f'Table {self._table_name} created')
+        logger.info(f'Table {self._table_name} created if not exist')
         cursor.close()
 
 
@@ -385,6 +385,8 @@ if __name__ == '__main__':
         report.write('\n')
         report.write(str(kpis))
     report.close()
+
+    logger.info("Panda's report generated")
 
     conn.close()
     generate_report_top_week_list()
