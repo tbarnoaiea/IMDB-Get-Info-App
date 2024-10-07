@@ -111,7 +111,7 @@ class FavoritesFan(IMDBdata):
                           trailer='TEXT')
         self.endpoint = endpoints.get('get_fan_favorites')
 
-    # Normalization data
+    # Data normalization
     def filter_data(self) -> list[dict[str, str | int | None | float | Any]]:
         data = self.get_data()
         list_filtered_data = list()
@@ -190,7 +190,7 @@ class WeekTop(IMDBdata):
                           )
         self.endpoint = endpoints.get('get_week_top_10')
 
-    # Normalization data
+    # Data normalization
     def filter_data(self) -> list[dict[str, str | int | None | float | Any]]:
         data = self.get_data()
         list_filtered_data = list()
@@ -268,7 +268,7 @@ class WhatsStreaming(IMDBdata):
                           provider='TEXT')
         self.endpoint = endpoints.get('get_whats_streaming')
 
-    # Normalization data
+    # Data normalization
     def filter_data(self) -> list[dict[str, str | int | None | float | Any]]:
         data = self.get_data()
         if type(data) is str:
